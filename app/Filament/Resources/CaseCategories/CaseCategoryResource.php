@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Filament\Resources\CaseCategories;
+
+use App\Filament\Resources\CaseCategories\Pages\CreateCaseCategory;
+use App\Filament\Resources\CaseCategories\Pages\EditCaseCategory;
+use App\Filament\Resources\CaseCategories\Pages\ListCaseCategories;
+use App\Filament\Resources\CaseCategories\Schemas\CaseCategoryForm;
+use App\Filament\Resources\CaseCategories\Tables\CaseCategoriesTable;
+use App\Models\CaseCategory;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class CaseCategoryResource extends Resource
+{
+    protected static ?string $model = CaseCategory::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $recordTitleAttribute = 'caseCategory';
+
+    public static function form(Schema $schema): Schema
+    {
+        return CaseCategoryForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return CaseCategoriesTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListCaseCategories::route('/'),
+            'create' => CreateCaseCategory::route('/create'),
+            'edit' => EditCaseCategory::route('/{record}/edit'),
+        ];
+    }
+}
