@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Court extends Model
 {
+    protected $fillable = [
+        'name',
+        'category_id',
+    ];
     public function category()
     {
         return $this->belongsTo(CourtCategory::class, 'category_id');
