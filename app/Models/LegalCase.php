@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class LegalCase extends Model
 {
+    protected $fillable = [
+        'title',
+        'description',
+        'category_id',
+        'court_id',
+    ];
+    protected $table = 'cases';
     public function clients()
     {
         return $this->belongsToMany(Client::class, 'case_client', 'case_id', 'client_id');

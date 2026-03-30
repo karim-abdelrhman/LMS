@@ -34,6 +34,10 @@ class ClientsTable
                     ->label('Address')
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('company_name')
+                    ->label('Company Name')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //

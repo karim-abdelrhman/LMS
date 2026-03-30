@@ -32,6 +32,10 @@ class ClientForm
                                 ->label('Address')
                                 ->required()
                                 ->maxLength(500),
+                            TextInput::make('company_name')
+                                ->label('Company Name')
+                                ->nullable()
+                                ->maxLength(255),
                         ]),
                     ]),
                 Section::make('Pictures')

@@ -12,6 +12,7 @@ class Client extends Model
         'phone',
         'address',
         'national_id',
+        'company_name',
         'photo',
         'id_front_photo',
         'id_back_photo',
