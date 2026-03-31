@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('phone')->nullable()->index();
             $table->string('national_id', 14)->unique();
-            $table->string('company_name')->nullable()->index();
+            $table->string('defendant_name')->nullable()->index();
             $table->text('address')->nullable();
             $table->string('photo')->nullable();
             $table->string('id_front_photo')->nullable();

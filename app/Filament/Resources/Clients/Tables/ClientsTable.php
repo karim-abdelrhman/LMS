@@ -34,8 +34,8 @@ class ClientsTable
                     ->label('Address')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('company_name')
-                    ->label('Company Name')
+                TextColumn::make('defendant_name')
+                    ->label('Defendant Name')
                     ->sortable()
                     ->searchable(),
             ])

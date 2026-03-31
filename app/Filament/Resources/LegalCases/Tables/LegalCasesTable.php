@@ -13,7 +13,11 @@ class LegalCasesTable
     {
         return $table
             ->columns([
-                //
+                \Filament\Tables\Columns\TextColumn::make('title')->label('Title')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('case_number')->label('Case Number')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('case_type')->label('Case Type')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('category.name')->label('Category')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('court.name')->label('Court')->sortable()->searchable(),
             ])
             ->filters([
                 //

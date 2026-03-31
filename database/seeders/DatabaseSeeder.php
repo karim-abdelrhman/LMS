@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             CaseCategorySeeder::class,
             CourtCategorySeeder::class,
             CourtSeeder::class,
+            LegalCaseSeeder::class,
         ]);
     }
 }
