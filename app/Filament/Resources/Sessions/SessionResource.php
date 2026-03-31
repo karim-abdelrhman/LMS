@@ -18,9 +18,10 @@ class SessionResource extends Resource
 {
     protected static ?string $model = Session::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Scale;
 
     protected static ?string $recordTitleAttribute = 'session';
+    protected static ?string $navigationLabel = 'الجلسات';
 
     public static function form(Schema $schema): Schema
     {
