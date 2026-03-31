@@ -5,7 +5,7 @@ namespace App\Filament\Resources\CaseCategories;
 use App\Filament\Resources\CaseCategories\Pages\CreateCaseCategory;
 use App\Filament\Resources\CaseCategories\Pages\EditCaseCategory;
 use App\Filament\Resources\CaseCategories\Pages\ListCaseCategories;
-use App\Filament\Resources\CaseCategories\RelationManagers\CasesRelationManager;
+use App\Filament\Resources\CaseCategories\RelationManagers\LegalCasesRelationManager;
 use App\Filament\Resources\CaseCategories\Schemas\CaseCategoryForm;
 use App\Filament\Resources\CaseCategories\Tables\CaseCategoriesTable;
 use App\Models\CaseCategory;
@@ -36,7 +36,7 @@ class CaseCategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            CasesRelationManager::class
+            LegalCasesRelationManager::class,
         ];
     }
 

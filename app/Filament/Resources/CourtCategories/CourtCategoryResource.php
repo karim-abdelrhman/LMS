@@ -5,6 +5,7 @@ namespace App\Filament\Resources\CourtCategories;
 use App\Filament\Resources\CourtCategories\Pages\CreateCourtCategory;
 use App\Filament\Resources\CourtCategories\Pages\EditCourtCategory;
 use App\Filament\Resources\CourtCategories\Pages\ListCourtCategories;
+use App\Filament\Resources\CourtCategories\RelationManagers\CourtsRelationManager;
 use App\Filament\Resources\CourtCategories\Schemas\CourtCategoryForm;
 use App\Filament\Resources\CourtCategories\Tables\CourtCategoriesTable;
 use App\Models\CourtCategory;
@@ -35,7 +36,7 @@ class CourtCategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CourtsRelationManager::class
         ];
     }
 
