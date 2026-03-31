@@ -22,6 +22,7 @@ class CourtCategoryResource extends Resource
     protected static string|UnitEnum|null $navigationGroup = 'المحاكم ';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Squares2x2;
+    protected static ?string $navigationLabel = 'أنواع المحاكم';
 
     protected static ?string $recordTitleAttribute = 'courtCategory';
 

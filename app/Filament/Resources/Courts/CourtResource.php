@@ -21,6 +21,7 @@ class CourtResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingLibrary;
     protected static string|UnitEnum|null $navigationGroup = 'المحاكم ';
+    protected static ?string $navigationLabel = 'المحاكم';
 
     protected static ?string $recordTitleAttribute = 'court';
 

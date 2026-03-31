@@ -22,6 +22,7 @@ class CaseCategoryResource extends Resource
     protected static string|UnitEnum|null $navigationGroup = 'القضايا';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Squares2x2;
+    protected static ?string $navigationLabel = 'أنواع القضايا';
 
     protected static ?string $recordTitleAttribute = 'caseCategory';
 
