@@ -16,6 +16,7 @@ class Client extends Model
         'photo',
         'id_front_photo',
         'id_back_photo',
+        'power_of_attorney'
     ];
     public function legalCases()
     {

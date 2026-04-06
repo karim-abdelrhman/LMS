@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('id_front_photo')->nullable();
             $table->string('id_back_photo')->nullable();
+            $table->string('power_of_attorney')->nullable();
             $table->timestamps();
         });
     }
