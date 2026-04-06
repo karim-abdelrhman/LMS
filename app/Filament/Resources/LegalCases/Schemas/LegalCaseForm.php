@@ -11,24 +11,26 @@ class LegalCaseForm
         return $schema
             ->components([
                 \Filament\Forms\Components\TextInput::make('case_number')
-                    ->label('Case Number')
+                    ->label('رقم القضية')
                     ->required()
                     ->unique(),
                 \Filament\Forms\Components\TextInput::make('title')
-                    ->label('Title')
+                    ->label('عنوان القضية')
                     ->required()
                     ->maxLength(255),
                 \Filament\Forms\Components\Select::make('status')
-                    ->label('Status')
+                    ->label('الحالة')
                     ->options([
-                        'open' => 'Open',
-                        'closed' => 'Closed',
+                        'open' => 'مفتوحة',
+                        'closed' => 'مقفوله',
                     ])
                     ->default('open')
                     ->required(),
                 \Filament\Forms\Components\Select::make('court_id')
-                    ->label('Court')
+                    ->label('المحكمة')
                     ->relationship('court', 'name')
+                    ->searchable()
+                    ->preload()
                     ->required(),
             ]);
     }
