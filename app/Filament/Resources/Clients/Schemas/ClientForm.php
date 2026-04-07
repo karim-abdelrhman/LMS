@@ -67,10 +67,10 @@ class ClientForm
                         ->columnSpan(1)
                         ->collapsible()
                         ->schema([
-
                             FileUpload::make('photo')
                                 ->label('الصورة الشخصية')
                                 ->image()
+                                ->avatar()  
                                 ->imagePreviewHeight('120')
                                 ->imageEditor() // crop + edit
                                 ->directory('client-photos')

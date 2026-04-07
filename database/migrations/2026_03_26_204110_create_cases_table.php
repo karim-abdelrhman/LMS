@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('case_number')->index();
-            $table->integer('case_type')->index();
             $table->unsignedBigInteger('category_id')->index();
             $table->unsignedBigInteger('court_id')->index();
             $table->timestamps();

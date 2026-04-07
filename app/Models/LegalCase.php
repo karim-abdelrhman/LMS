@@ -8,6 +8,7 @@ class LegalCase extends Model
 {
     protected $fillable = [
         'title',
+        'case_number',
         'description',
         'category_id',
         'court_id',

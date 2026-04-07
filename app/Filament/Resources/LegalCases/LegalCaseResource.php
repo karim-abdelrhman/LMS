@@ -5,6 +5,7 @@ namespace App\Filament\Resources\LegalCases;
 use App\Filament\Resources\LegalCases\Pages\CreateLegalCase;
 use App\Filament\Resources\LegalCases\Pages\EditLegalCase;
 use App\Filament\Resources\LegalCases\Pages\ListLegalCases;
+use App\Filament\Resources\LegalCases\RelationManagers\ClientsRelationManager;
 use App\Filament\Resources\LegalCases\Schemas\LegalCaseForm;
 use App\Filament\Resources\LegalCases\Tables\LegalCasesTable;
 use App\Models\LegalCase;
@@ -38,7 +39,7 @@ class LegalCaseResource extends Resource
     public static function getRelations(): array
     {
         return [
-        
+            ClientsRelationManager::class,
         ];
     }
 
