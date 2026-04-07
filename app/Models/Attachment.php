@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AttachmentType;
 use Illuminate\Database\Eloquent\Model;
 
 class Attachment extends Model
@@ -12,6 +13,10 @@ class Attachment extends Model
         'mime_type',
         'size',
         'type',
+    ];
+
+    protected $casts = [
+        'type' => AttachmentType::class,
     ];
 
     public function attachable()
