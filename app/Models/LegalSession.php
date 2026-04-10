@@ -16,12 +16,14 @@ class LegalSession extends Model
         'judge',
         'notes',
         'status',
+        'next_session_at',
     ];
 
     protected function casts(): array
     {
         return [
             'scheduled_at' => 'datetime',
+            'next_session_at' => 'datetime',
         ];
     }
 

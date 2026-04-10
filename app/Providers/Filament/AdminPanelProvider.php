@@ -28,6 +28,8 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandLogo(asset('lms.png'))
+            ->brandName('مكتب الأستاذ محمد وصال')
             ->colors([
                 'primary' => Color::Amber,
             ])
