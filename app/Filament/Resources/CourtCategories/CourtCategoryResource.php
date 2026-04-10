@@ -26,7 +26,7 @@ class CourtCategoryResource extends Resource
     protected static ?string $modelLabel = 'فئة المحكمة';
     protected static ?string $pluralModelLabel = 'فئات المحاكم';
 
-    protected static ?string $recordTitleAttribute = 'courtCategory';
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema
     {

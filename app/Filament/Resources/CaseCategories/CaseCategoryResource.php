@@ -26,7 +26,7 @@ class CaseCategoryResource extends Resource
     protected static ?string $modelLabel = 'فئة القضية';
     protected static ?string $pluralModelLabel = 'فئات القضايا';
 
-    protected static ?string $recordTitleAttribute = 'caseCategory';
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema
     {
