@@ -21,6 +21,8 @@ class LegalCaseResource extends Resource
     protected static ?string $model = LegalCase::class;
     protected static string|UnitEnum|null $navigationGroup = 'القضايا';
     protected static ?string $navigationLabel = 'القضايا';
+    protected static ?string $modelLabel = 'قضية';
+    protected static ?string $pluralModelLabel = 'القضايا';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ClipboardDocumentList;
 

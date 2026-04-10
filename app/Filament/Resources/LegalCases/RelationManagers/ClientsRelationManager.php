@@ -37,6 +37,7 @@ class ClientsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
+                
             ])
             ->filters([
                 //

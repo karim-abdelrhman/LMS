@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\LegalCases\Schemas;
 
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -12,8 +15,8 @@ class LegalCaseForm
         return $schema
             ->components([
                 Section::make('المعلومات الأساسية')
-                ->columnSpan(2)
-                ->schema([
+                    ->columnSpan(2)
+                    ->schema([
                         \Filament\Forms\Components\TextInput::make('title')
                             ->label('عنوان القضية')
                             ->required()
@@ -30,6 +33,12 @@ class LegalCaseForm
                             ])
                             ->default('open')
                             ->required(),
+                        \Filament\Forms\Components\Select::make('category_id')
+                            ->label('نوع القضية')
+                            ->relationship('category', 'name')
+                            ->searchable()
+                            ->preload()
+                            ->required(),
                         \Filament\Forms\Components\Select::make('court_id')
                             ->label('المحكمة')
                             ->relationship('court', 'name')
@@ -39,7 +48,6 @@ class LegalCaseForm
 
                         \Filament\Forms\Components\Select::make('clients')
                             ->label('العملاء')
-                            ->columnSpan(2)
                             ->multiple()
                             ->relationship('clients', 'name')
                             ->preload()
@@ -51,19 +59,29 @@ class LegalCaseForm
                             ->label('وصف القضية'),
                     ])->columns(2),
                 Section::make('المرفقات')
-                ->columnSpan(1)
+                    ->columnSpan(1)
                     ->schema([
-                        \Filament\Forms\Components\FileUpload::make('attachments')
+                        Repeater::make('attachments')
                             ->label('مرفقات القضية')
-                            ->helperText('يمكنك رفع أكثر من ملف متعلق بالقضية')
-                            ->multiple()
+                            ->relationship('attachments')
+                            ->schema([
+                                FileUpload::make('file')
+                                    ->label('الملف')
+                                    ->directory('case_attachments')
+                                    ->required()
+                                    ->openable()
+                                    ->downloadable(),
+
+                                Select::make('type')
+                                    ->label('نوع المستند')
+                                    ->options(\App\Enums\AttachmentType::options())
+                                    ->required(),
+                            ])
                             ->reorderable()
-                            ->directory('case_attachments')
-                            ->maxFiles(10)
-                            ->appendFiles() // Add new files to existing ones
-                            ->panelLayout('grid') // Display files in grid layout
-                            ->uploadingMessage('Uploading files...')
-                    ]),
+                            ->collapsible()
+                            ->itemLabel(fn($state) => $state['type'] ?? 'مرفق')
+                            ->defaultItems(0)
+                    ])
             ])->columns(3);
     }
 }

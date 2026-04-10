@@ -27,6 +27,9 @@ class LegalCasesRelationManager extends RelationManager
                 TextInput::make('title')
                     ->required()
                     ->maxLength(255),
+                    TextInput::make('case_number')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -37,18 +40,21 @@ class LegalCasesRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('title')
                     ->searchable(),
+            TextInput::make('case_number')
+                ->required()
+                ->maxLength(255),
             ])
             ->filters([
                 //
             ])
             ->headerActions([
                 CreateAction::make(),
-                AttachAction::make(),
+                // AttachAction::make(),
             ])
             ->recordActions([
                 EditAction::make(),
-                DetachAction::make(),
-                DeleteAction::make(),
+                // DetachAction::make(),
+                // DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

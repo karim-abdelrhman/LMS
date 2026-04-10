@@ -13,11 +13,14 @@ class LegalCasesTable
     {
         return $table
             ->columns([
-                \Filament\Tables\Columns\TextColumn::make('title')->label('Title')->sortable()->searchable(),
-                \Filament\Tables\Columns\TextColumn::make('case_number')->label('Case Number')->sortable()->searchable(),
-                \Filament\Tables\Columns\TextColumn::make('case_type')->label('Case Type')->sortable()->searchable(),
-                \Filament\Tables\Columns\TextColumn::make('category.name')->label('Category')->sortable()->searchable(),
-                \Filament\Tables\Columns\TextColumn::make('court.name')->label('Court')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('title')->label('العنوان')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('case_number')->label('رقم القضية')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('category.name')->label('نوع القضية')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('court.name')->label('المحكمة')->sortable()->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('attachments_count')
+                    ->label('المرفقات')
+                    ->counts('attachments')
+                    ->toggleable(),
             ])
             ->filters([
                 //

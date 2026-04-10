@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CaseStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class LegalCase extends Model
@@ -12,8 +13,12 @@ class LegalCase extends Model
         'description',
         'category_id',
         'court_id',
+        'status',
     ];
     protected $table = 'cases';
+    protected $casts = [
+        'status' => CaseStatus::class
+    ];
     public function clients()
     {
         return $this->belongsToMany(Client::class, 'case_client', 'case_id', 'client_id');
@@ -32,5 +37,10 @@ class LegalCase extends Model
     public function sessions()
     {
         return $this->hasMany(Session::class, 'case_id');
+    }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 }

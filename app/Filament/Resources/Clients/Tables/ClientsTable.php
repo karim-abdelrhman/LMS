@@ -15,27 +15,27 @@ class ClientsTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Name')
+                    ->label('الاسم')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label('Email')
+                    ->label('الإيميل')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('phone')
-                    ->label('Phone')
+                    ->label('رقم الموبايل')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('national_id')
-                    ->label('National ID')
+                    ->label('الرقم القومي')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('address')
-                    ->label('Address')
+                    ->label('العنوان')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('defendant_name')
-                    ->label('Defendant Name')
+                    ->label('المدعي عليه')
                     ->sortable()
                     ->searchable(),
             ])

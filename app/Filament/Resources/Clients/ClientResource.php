@@ -23,6 +23,8 @@ class ClientResource extends Resource
     protected static ?int $navigationSort = 1;
     protected static ?string $recordTitleAttribute = 'client';
     protected static ?string $navigationLabel = 'العملاء';
+    protected static ?string $modelLabel = 'عميل';
+    protected static ?string $pluralModelLabel = 'العملاء';
 
     public static function form(Schema $schema): Schema
     {

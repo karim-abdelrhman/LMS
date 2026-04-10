@@ -16,4 +16,5 @@ class EditLegalCase extends EditRecord
             DeleteAction::make(),
         ];
     }
+
 }
