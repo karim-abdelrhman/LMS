@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Clients\RelationManagers;
 
-use Filament\Actions\AttachAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -19,7 +18,9 @@ use Filament\Tables\Table;
 class LegalCasesRelationManager extends RelationManager
 {
     protected static string $relationship = 'legalCases';
-
+    protected static ?string $title = 'القضايا';
+    protected static ?string $modelLabel = 'قضية';
+    protected static ?string $pluralModelLabel = 'القضايا';
     public function form(Schema $schema): Schema
     {
         return $schema
@@ -53,8 +54,8 @@ class LegalCasesRelationManager extends RelationManager
             ])
             ->recordActions([
                 EditAction::make(),
-                // DetachAction::make(),
-                // DeleteAction::make(),
+                DetachAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

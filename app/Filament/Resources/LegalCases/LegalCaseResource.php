@@ -59,4 +59,9 @@ class LegalCaseResource extends Resource
             'edit' => EditLegalCase::route('/{record}/edit'),
         ];
     }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['title', 'case_number', 'status', 'category.name'];
+    }
 }

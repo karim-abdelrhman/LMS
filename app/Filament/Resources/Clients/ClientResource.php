@@ -14,6 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class ClientResource extends Resource
 {
@@ -49,6 +50,18 @@ class ClientResource extends Resource
             'index' => ListClients::route('/'),
             'create' => CreateClient::route('/create'),
             'edit' => EditClient::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'email' , 'phone' , 'national_id', 'legalCases.title'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {   
+        return [
+            'القضايا' => $record->legalCases->pluck('title')->join(', '),
         ];
     }
 }

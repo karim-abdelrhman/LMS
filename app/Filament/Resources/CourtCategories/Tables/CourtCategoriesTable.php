@@ -15,7 +15,7 @@ class CourtCategoriesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Category Name')
+                    ->label('اسم الفئة')
                     ->sortable()
                     ->searchable(),
             ])

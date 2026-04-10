@@ -22,23 +22,6 @@ class ClientsRelationManager extends RelationManager
 {
     protected static string $relationship = 'clients';
 
-    private static function formatPhoneForWhatsApp(string $phone): string
-    {
-        // Remove spaces, dashes, and other characters
-        $phone = preg_replace('/[^0-9]/', '', $phone);
-
-        // If phone starts with 0, replace with 20 (Egypt country code)
-        if (str_starts_with($phone, '0')) {
-            $phone = '20' . substr($phone, 1);
-        }
-
-        // Ensure it starts with country code
-        if (!str_starts_with($phone, '+')) {
-            $phone = '+' . $phone;
-        }
-
-        return $phone;
-    }
     protected static ?string $title = 'العملاء';
     protected static ?string $modelLabel = 'عميل';
     protected static ?string $pluralModelLabel = 'العملاء';
@@ -108,7 +91,7 @@ class ClientsRelationManager extends RelationManager
                     ->label('واتس أب')
                     ->icon('heroicon-m-chat-bubble-left')
                     ->color('success')
-                    ->url(fn($record) => 'https://wa.me/' . self::formatPhoneForWhatsApp($record->phone))
+                    ->url(fn($record) => 'https://wa.me/' . $record->phone)
                     ->openUrlInNewTab(),
                 EditAction::make(),
                 DetachAction::make(),

@@ -14,11 +14,11 @@ class CourtForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->label('Court Name')
+                    ->label('اسم المحكمة')
                     ->required()
                     ->maxLength(255),
                 Select::make('category_id')
-                    ->label('Court Category')
+                    ->label('الفئة')
                     ->options(CourtCategory::all()->pluck('name', 'id'))
                     ->searchable()
                     ->required(),

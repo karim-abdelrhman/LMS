@@ -12,7 +12,7 @@ class CourtCategoryForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->label('Category Name')
+                    ->label('اسم الفئة')
                     ->required()
                     ->maxLength(255),
             ]);

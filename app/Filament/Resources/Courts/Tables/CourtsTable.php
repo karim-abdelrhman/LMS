@@ -15,11 +15,11 @@ class CourtsTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Court Name')
+                    ->label('اسم المحكمة')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('category.name')
-                    ->label('Category')
+                    ->label('الفئة')
                     ->sortable()
             ])
             ->filters([
