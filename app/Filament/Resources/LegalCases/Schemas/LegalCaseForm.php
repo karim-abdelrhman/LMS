@@ -2,9 +2,14 @@
 
 namespace App\Filament\Resources\LegalCases\Schemas;
 
+use App\Enums\AttachmentType;
+use App\Enums\CaseStatus;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -15,50 +20,54 @@ class LegalCaseForm
         return $schema
             ->components([
                 Section::make('المعلومات الأساسية')
+                    ->collapsible()
+                    ->collapsed(false)
                     ->columnSpan(2)
                     ->schema([
-                        \Filament\Forms\Components\TextInput::make('title')
+                        TextInput::make('title')
                             ->label('عنوان القضية')
                             ->required()
                             ->maxLength(255),
-                        \Filament\Forms\Components\TextInput::make('case_number')
+                        TextInput::make('case_number')
                             ->label('رقم القضية')
                             ->required()
                             ->unique(),
-                        \Filament\Forms\Components\Select::make('status')
-                            ->label('الحالة')
-                            ->options([
-                                'open' => 'مفتوحة',
-                                'closed' => 'مقفوله',
-                            ])
-                            ->default('open')
-                            ->required(),
-                        \Filament\Forms\Components\Select::make('category_id')
-                            ->label('نوع القضية')
-                            ->relationship('category', 'name')
-                            ->searchable()
-                            ->preload()
-                            ->required(),
-                        \Filament\Forms\Components\Select::make('court_id')
-                            ->label('المحكمة')
-                            ->relationship('court', 'name')
-                            ->searchable()
-                            ->preload()
-                            ->required(),
+                        Grid::make(1)
+                            ->columnSpan(2)
+                            ->schema([
+                                Select::make('status')
+                                    ->label('الحالة')
+                                    ->options([
+                                        CaseStatus::OPEN->value => CaseStatus::OPEN->label(),
+                                        CaseStatus::CLOSED->value => CaseStatus::CLOSED->label(),
+                                        CaseStatus::WON->value => CaseStatus::WON->label(),
+                                    ])
+                                    ->default(CaseStatus::OPEN->value)
+                                    ->required(),
 
-                        \Filament\Forms\Components\Select::make('clients')
-                            ->label('العملاء')
-                            ->multiple()
-                            ->relationship('clients', 'name')
-                            ->preload()
-                            ->searchable()
-                            ->required(),
+                                Select::make('category_id')
+                                    ->label('نوع القضية')
+                                    ->relationship('category', 'name')
+                                    ->searchable()
+                                    ->preload()
+                                    ->required(),
 
-                        \Filament\Forms\Components\RichEditor::make('description')
+                                Select::make('court_id')
+                                    ->label('المحكمة')
+                                    ->relationship('court', 'name')
+                                    ->searchable()
+                                    ->preload()
+                                    ->required(),
+                            ]),
+
+
+                        RichEditor::make('description')
                             ->columnSpanFull()
                             ->label('وصف القضية'),
                     ])->columns(2),
                 Section::make('المرفقات')
+                    ->collapsible()
+                    ->collapsed(false)
                     ->columnSpan(1)
                     ->schema([
                         Repeater::make('attachments')
@@ -74,14 +83,14 @@ class LegalCaseForm
 
                                 Select::make('type')
                                     ->label('نوع المستند')
-                                    ->options(\App\Enums\AttachmentType::options())
+                                    ->options(AttachmentType::options())
                                     ->required(),
                             ])
                             ->reorderable()
                             ->collapsible()
                             ->itemLabel(fn($state) => $state['type'] ?? 'مرفق')
-                            ->defaultItems(0)
-                    ])
+                            ->defaultItems(0),
+                    ]),
             ])->columns(3);
     }
 }

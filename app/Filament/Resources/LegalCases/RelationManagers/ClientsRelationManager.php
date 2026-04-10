@@ -10,6 +10,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\DetachAction;
 use Filament\Actions\DetachBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
@@ -19,14 +20,51 @@ use Filament\Tables\Table;
 class ClientsRelationManager extends RelationManager
 {
     protected static string $relationship = 'clients';
-
+    protected static ?string $title = 'العملاء';
+    protected static ?string $modelLabel = 'عميل';
+    protected static ?string $pluralModelLabel = 'العملاء';
     public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 TextInput::make('name')
                     ->required()
+                    ->label('الإسم')
                     ->maxLength(255),
+                TextInput::make('email')
+                    ->email()
+                    ->label('الإيميل')
+                    ->maxLength(255),
+                TextInput::make('phone')
+                    ->tel()
+                    ->label('رقم الموبايل')
+                    ->required()
+                    ->rule('regex:/^01[0-9]{9}$/')
+                    ->maxLength(255),
+                TextInput::make('address')
+                    ->label('العنوان')
+                    ->maxLength(255),
+                TextInput::make('national_id')
+                    ->label('الرقم القومي')
+                    ->maxLength(255),
+                TextInput::make('defendant_name')
+                    ->label('المدعي عليه')
+                    ->maxLength(255),
+                FileUpload::make('photo')
+                    ->label('الصورة الشخصية')
+                    ->image()
+                    ->maxSize(1024),
+                FileUpload::make('id_front_photo')
+                    ->label('البطاقة (أمام)')
+                    ->image()
+                    ->maxSize(1024),
+                FileUpload::make('id_back_photo')
+                    ->label('البطاقة (خلف)')
+                    ->image()
+                    ->maxSize(1024),
+                FileUpload::make('power_of_attorney')
+                    ->label('التوكيل')
+                    ->maxSize(2048),
             ]);
     }
 

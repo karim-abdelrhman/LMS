@@ -15,13 +15,22 @@ class LegalCase extends Model
         'court_id',
         'status',
     ];
+
     protected $table = 'cases';
+
     protected $casts = [
-        'status' => CaseStatus::class
+        'status' => CaseStatus::class,
     ];
+
     public function clients()
     {
-        return $this->belongsToMany(Client::class, 'case_client', 'case_id', 'client_id');
+        return $this->belongsToMany(Client::class, 'case_client', 'case_id', 'client_id')
+            ->using(CaseClient::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'legal_case_id');
     }
 
     public function category()

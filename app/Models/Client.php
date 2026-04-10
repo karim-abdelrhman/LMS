@@ -16,10 +16,17 @@ class Client extends Model
         'photo',
         'id_front_photo',
         'id_back_photo',
-        'power_of_attorney'
+        'power_of_attorney',
     ];
+
     public function legalCases()
     {
-        return $this->belongsToMany(LegalCase::class, 'case_client', 'client_id', 'case_id');
+        return $this->belongsToMany(LegalCase::class, 'case_client', 'client_id', 'case_id')
+            ->using(CaseClient::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }

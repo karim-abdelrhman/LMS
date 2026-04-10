@@ -6,6 +6,7 @@ use App\Filament\Resources\LegalCases\Pages\CreateLegalCase;
 use App\Filament\Resources\LegalCases\Pages\EditLegalCase;
 use App\Filament\Resources\LegalCases\Pages\ListLegalCases;
 use App\Filament\Resources\LegalCases\RelationManagers\ClientsRelationManager;
+use App\Filament\Resources\LegalCases\RelationManagers\PaymentsRelationManager;
 use App\Filament\Resources\LegalCases\Schemas\LegalCaseForm;
 use App\Filament\Resources\LegalCases\Tables\LegalCasesTable;
 use App\Models\LegalCase;
@@ -19,9 +20,13 @@ use UnitEnum;
 class LegalCaseResource extends Resource
 {
     protected static ?string $model = LegalCase::class;
+
     protected static string|UnitEnum|null $navigationGroup = 'القضايا';
+
     protected static ?string $navigationLabel = 'القضايا';
+
     protected static ?string $modelLabel = 'قضية';
+
     protected static ?string $pluralModelLabel = 'القضايا';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ClipboardDocumentList;
@@ -42,6 +47,7 @@ class LegalCaseResource extends Resource
     {
         return [
             ClientsRelationManager::class,
+            PaymentsRelationManager::class,
         ];
     }
 
