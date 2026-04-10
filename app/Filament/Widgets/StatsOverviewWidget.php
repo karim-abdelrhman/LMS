@@ -16,28 +16,28 @@ class StatsOverviewWidget extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Total Clients', $this->getTotalClients())
-                ->description('All registered clients')
+            Stat::make('إجمالي العملاء', $this->getTotalClients())
+                ->description('جميع العملاء المسجلين')
                 ->descriptionIcon('heroicon-m-users')
                 ->color('info'),
 
-            Stat::make('Total Cases', $this->getTotalCases())
-                ->description('Legal cases in system')
+            Stat::make('إجمالي القضايا', $this->getTotalCases())
+                ->description('القضايا القانونية في النظام')
                 ->descriptionIcon('heroicon-m-document-text')
                 ->color('primary'),
 
-            Stat::make('Pending Payments', $this->formatCurrency($this->getPendingAmount()))
-                ->description(sprintf('%d unpaid invoices', $this->getPendingPaymentCount()))
+            Stat::make('المدفوعات المعلقة', $this->formatCurrency($this->getPendingAmount()))
+                ->description(sprintf('%d فاتورة غير مدفوعة', $this->getPendingPaymentCount()))
                 ->descriptionIcon('heroicon-m-clock')
                 ->color('warning'),
 
-            Stat::make('Paid Payments', $this->formatCurrency($this->getPaidAmount()))
-                ->description(sprintf('%d completed payments', $this->getPaidPaymentCount()))
+            Stat::make('المدفوعات المكتملة', $this->formatCurrency($this->getPaidAmount()))
+                ->description(sprintf('%d دفعات مكتملة', $this->getPaidPaymentCount()))
                 ->descriptionIcon('heroicon-m-check-circle')
                 ->color('success'),
 
-            Stat::make('Total Revenue', $this->formatCurrency($this->getTotalRevenue()))
-                ->description('Total amount collected')
+            Stat::make('إجمالي الإيرادات', $this->formatCurrency($this->getTotalRevenue()))
+                ->description('إجمالي المبلغ المجمع')
                 ->descriptionIcon('heroicon-m-banknotes')
                 ->color('success'),
         ];

@@ -5,9 +5,6 @@
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">
                     📅 الجلسات القادمة في 7 أيام
                 </h3>
-                <span class="text-sm text-gray-500 dark:text-gray-400">
-                    Next 7 Days
-                </span>
             </div>
 
             @if ($this->hasUpcomingSessions())
@@ -68,7 +65,7 @@
                         لا توجد جلسات مجدولة
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                        No upcoming sessions in the next 7 days
+                        في الأيام السبعة القادمة
                     </p>
                 </div>
             @endif

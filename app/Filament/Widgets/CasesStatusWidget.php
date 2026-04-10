@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class CasesStatusWidget extends ChartWidget
 {
-    protected  ?string $heading = 'Cases Status Breakdown';
+    protected  ?string $heading = 'تفصيل حالات القضايا';
 
     protected static ?int $sort = 2;
 
@@ -22,7 +22,7 @@ class CasesStatusWidget extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Cases',
+                    'label' => 'القضايا',
                     'data' => $caseStats['counts'],
                     'backgroundColor' => [
                         '#f59e0b', // Open - Amber/Warning

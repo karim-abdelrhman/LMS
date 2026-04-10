@@ -9,7 +9,7 @@ use Filament\Widgets\ChartWidget;
 
 class PaymentsSummaryWidget extends ChartWidget
 {
-    protected  ?string $heading = 'Payments Summary by Method';
+    protected  ?string $heading = 'ملخص المدفوعات حسب الطريقة';
 
     protected static ?int $sort = 3;
 
@@ -22,7 +22,7 @@ class PaymentsSummaryWidget extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Collected (EGP)',
+                    'label' => 'التحصيل (جنيه)',
                     'data' => $paymentStats['collected'],
                     'backgroundColor' => '#10b981',
                     'borderColor' => '#059669',
@@ -32,7 +32,7 @@ class PaymentsSummaryWidget extends ChartWidget
                     'type' => 'line',
                 ],
                 [
-                    'label' => 'Pending (EGP)',
+                    'label' => 'معلق (جنيه)',
                     'data' => $paymentStats['pending'],
                     'backgroundColor' => '#f59e0b',
                     'borderColor' => '#d97706',

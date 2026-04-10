@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\LegalCases\RelationManagers;
 
+use Filament\Actions\Action;
 use Filament\Actions\AttachAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
@@ -20,6 +21,24 @@ use Filament\Tables\Table;
 class ClientsRelationManager extends RelationManager
 {
     protected static string $relationship = 'clients';
+
+    private static function formatPhoneForWhatsApp(string $phone): string
+    {
+        // Remove spaces, dashes, and other characters
+        $phone = preg_replace('/[^0-9]/', '', $phone);
+
+        // If phone starts with 0, replace with 20 (Egypt country code)
+        if (str_starts_with($phone, '0')) {
+            $phone = '20' . substr($phone, 1);
+        }
+
+        // Ensure it starts with country code
+        if (!str_starts_with($phone, '+')) {
+            $phone = '+' . $phone;
+        }
+
+        return $phone;
+    }
     protected static ?string $title = 'العملاء';
     protected static ?string $modelLabel = 'عميل';
     protected static ?string $pluralModelLabel = 'العملاء';
@@ -75,7 +94,7 @@ class ClientsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                
+
             ])
             ->filters([
                 //
@@ -85,6 +104,12 @@ class ClientsRelationManager extends RelationManager
                 AttachAction::make(),
             ])
             ->recordActions([
+                Action::make('whatsapp')
+                    ->label('واتس أب')
+                    ->icon('heroicon-m-chat-bubble-left')
+                    ->color('success')
+                    ->url(fn($record) => 'https://wa.me/' . self::formatPhoneForWhatsApp($record->phone))
+                    ->openUrlInNewTab(),
                 EditAction::make(),
                 DetachAction::make(),
                 DeleteAction::make(),

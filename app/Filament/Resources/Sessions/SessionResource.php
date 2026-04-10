@@ -7,7 +7,7 @@ use App\Filament\Resources\Sessions\Pages\EditSession;
 use App\Filament\Resources\Sessions\Pages\ListSessions;
 use App\Filament\Resources\Sessions\Schemas\SessionForm;
 use App\Filament\Resources\Sessions\Tables\SessionsTable;
-use App\Models\Session;
+use App\Models\LegalSession;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -16,11 +16,11 @@ use Filament\Tables\Table;
 
 class SessionResource extends Resource
 {
-    protected static ?string $model = Session::class;
+    protected static ?string $model = LegalSession::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Scale;
 
-    protected static ?string $recordTitleAttribute = 'session';
+    protected static ?string $recordTitleAttribute = 'id';
     protected static ?string $navigationLabel = 'الجلسات';
 
     public static function form(Schema $schema): Schema
