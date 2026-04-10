@@ -48,6 +48,11 @@ class LegalCase extends Model
         return $this->hasMany(Session::class, 'case_id');
     }
 
+    public function legalSessions()
+    {
+        return $this->hasMany(LegalSession::class, 'case_id');
+    }
+
     public function attachments()
     {
         return $this->morphMany(Attachment::class, 'attachable');
